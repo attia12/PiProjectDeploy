@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>User Roles and Permissions</h2>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Select Roles</mat-label>
+    <mat-select [(ngModel)]="selectedRoles" multiple>
+      <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Select Permissions</mat-label>
+    <mat-select [(ngModel)]="selectedPermissions" multiple>
+      <mat-option *ngFor="let permission of permissions" [value]="permission">{{ permission }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onConfirm()">Confirm</button>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+</div>

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Upload Profile Image</h2>
+<mat-dialog-content>
+  <input type="file" (change)="handleFileInput($event)">
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button  (click)="upload()">Upload</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+</mat-dialog-actions>
+
+

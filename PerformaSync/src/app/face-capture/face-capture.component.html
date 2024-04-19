@@ -1,0 +1,9 @@
+<div>
+  <video #video [height]="400" [width]="600" autoplay muted playsinline></video>
+</div>
+
+<button (click)="triggerSnapshot()">Take Snapshot</button>
+
+<div *ngIf="capturedImage">
+  <img [src]="capturedImage.imageAsDataUrl" [alt]="'Captured Image'">
+</div>

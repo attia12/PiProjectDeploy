@@ -1,0 +1,74 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card margin">
+            <div class="card-header card-header-danger">
+              <h5 class="card-title">Lettre Table</h5>
+            </div>
+  
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>Description</th>
+                    <th>User</th>
+                    <th>CV</th>
+                    <th>Actions</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let l of lettres">
+                      <td>
+                        <span *ngIf="l.description.length > 30">
+                          {{ l.description | slice:0:30 }}...
+                          <a href="javascript:void(0);" class="lire-plus" (click)="showModal(l.description)">Lire la suite</a>
+                        </span>
+                        <span *ngIf="l.description.length <= 30">{{ l.description }}</span>
+                      </td>
+                      <td>{{ l.userName }}</td>
+                      <td>
+                        <img [src]="l.cv" alt="CV" class="img-thumbnail" style="width: 100px; height: 100px;">
+                      </td>
+                      <td class="d-flex f-row">
+                        <button type="button" class="btn btn-warning" (click)="openMeetingModal(l._id, l.user)">Schedule a meeting</button>
+                        <button type="button" class="btn btn-danger" (click)="confirmDelete(l._id)">Ignore</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="showMeetingModal" class="modal">
+      <div class="modal-content">
+        <span class="close" (click)="closeMeetingModal()">&times;</span>
+        <h2>Schedule a Meeting</h2>
+        <form (ngSubmit)="submitMeetingForm()" #meetingForm="ngForm">
+          <div class="form-group">
+            <label for="lienMeet">Meeting Link:</label>
+            <input type="text" class="form-control" id="lienMeet" name="lienMeet" [(ngModel)]="meetingFormModel.lienMeet" required>
+          </div>
+          <div class="form-group">
+            <label for="dateDebut">Date:</label>
+            <input type="date" class="form-control" id="dateDebut" name="dateDebut" [(ngModel)]="meetingFormModel.dateDebut" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Time:</label>
+            <input type="time" class="form-control" id="time" name="time" [(ngModel)]="meetingFormModel.time" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Schedule Meeting</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="showModalBox" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <p>{{ selectedDescription }}</p>
+    </div>

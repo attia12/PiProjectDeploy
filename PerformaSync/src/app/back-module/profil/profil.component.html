@@ -1,0 +1,65 @@
+<mat-card  >
+  <h3>Your Profile Details</h3>
+
+
+
+  <mat-card-content>
+    <div class="bootstap-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="container text-center">
+            <img *ngIf="user.image; else defaultImage" [src]="user.image" alt="Profile Image" class="profile-image">
+            <ng-template #defaultImage>
+              <img src="https://i.stack.imgur.com/l60Hf.png" alt="Default Profile Image" class="profile-image">
+            </ng-template>
+            <h1 class="mt20">{{user.firstname}} {{user.lastname}}</h1>
+          </div>
+          <div class="col-md 10 offset-md-1">
+            <!--      table details-->
+            <table class="table text-center" >
+              <tr>
+
+                <td>Username</td>
+                <td>{{user.username}}</td>
+
+              </tr>
+              <tr>
+
+                <td>Userid</td>
+                <td>EXAM {{user.id}}</td>
+
+              </tr>
+              <tr *ngIf="!user">
+
+                <td >Phone</td>
+                <td>{{user.phone}}</td>
+
+              </tr>
+
+              <tr>
+
+                <td>Role</td>
+                <td>{{user.roles[0]}}</td>
+
+              </tr>
+              <tr>
+
+                <td>Status</td>
+                <td>{{user.enabled ? "ACTIVE":"NOTACTIVE" }}</td>
+
+              </tr>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions class="text-center">
+    <button mat-raised-button color="primary" (click)="openDialogProfil()">UPDATE</button>
+    <button mat-raised-button color="accent">SHARE</button>
+  </mat-card-actions>
+</mat-card>
