@@ -82,4 +82,8 @@ export class LoginComponent implements OnInit{
     this.router.navigate(['/cam']);
 
   }
+  navigateToSignUp() {
+    this.router.navigate(['/signup']);
+
+  }
 }
