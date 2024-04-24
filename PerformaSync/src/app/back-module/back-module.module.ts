@@ -8,6 +8,7 @@ import {MatButton} from "@angular/material/button";
 import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {ChatService} from "./chat/chat.service";
 import {MatPaginatorModule} from "@angular/material/paginator";
+
 export function tokenGetter()
 {
   const token = localStorage.getItem("access_token");
@@ -34,6 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     CommonModule,
     BackModuleRoutingModule,
     SocketIoModule.forRoot(config),
+   
+    
 
 
     MatMenu,

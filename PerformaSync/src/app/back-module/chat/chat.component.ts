@@ -1,11 +1,16 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ChatService} from "./chat.service";
-import {AsyncPipe, JsonPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {MatListOption, MatSelectionList, MatSelectionListChange} from "@angular/material/list";
 import {MatCard} from "@angular/material/card";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
+import {MatError} from "@angular/material/form-field";
+import {ChatRoomComponent} from "../chat-room/chat-room.component";
+import { UserI } from '../user.interface';
+import { UserService } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -20,21 +25,28 @@ import {RouterLink} from "@angular/router";
     MatPaginator,
     JsonPipe,
     MatButton,
-    RouterLink
+    RouterLink,
+    MatError,
+    NgIf,
+    ChatRoomComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
 export class ChatComponent implements OnInit,AfterViewInit{
   rooms$=this.chatService.getMyRooms();
+  user$:Observable<UserI | null>=this.userServcie.geLoggedInUser();
+
   selectedRoom=null;
 
-  constructor(private chatService:ChatService) {
+  constructor(private chatService:ChatService,private userServcie:UserService) {
+
   }
 
   ngOnInit(): void {
-    console.log(this.chatService.getMyRooms())
-    this.chatService.createRoom();
+    
+   
+    this.chatService.emitPaginateRooms(10,0);
   }
 
 

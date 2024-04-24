@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, catchError, filter, Observable, of, Subject, switchMap, take, tap, throwError} from "rxjs";
 
 import {jwtDecode} from "jwt-decode";
 import {Router} from "@angular/router";
+import {UserI} from "../back-module/user.interface";
 export const ROLES = {
   SUPERADMIN: "ESUPERADMIN",
   ADMIN: "EADMIN",
@@ -170,6 +171,34 @@ updatePermissionAndRoles(userId:any,body:any)
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
   }
+
+  findByUsername(username: string): Observable<UserI[]> {
+    return this.http.get<UserI[]>(`${this.baseUrl}/user/find-by-username?username=${username}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching users:', error);
+        // Check if the error is due to unexpected HTML response
+        if (error.status === 200 && error.error instanceof ProgressEvent) {
+          console.error('HTML error response detected. Returning empty array.');
+          return of([]); // Return an empty array as fallback
+        }
+        // For other errors, rethrow the error
+        return throwError(error);
+      })
+    );
+  }
+
+  geLoggedInUser(): Observable<UserI> {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      const userId = decodedToken.sub; 
+      return this.getUserById(userId);
+    }
+    return null;
+  }
+ 
+
+  
 
 
 

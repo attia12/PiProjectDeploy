@@ -66,8 +66,7 @@ export class BackComponent implements OnInit{
 
 
     this.userService.logout().subscribe(() => {
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
+      
       this.router.navigate(['/login']);
     }, error => {
       console.log("logout fail", error);
