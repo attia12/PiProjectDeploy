@@ -327,6 +327,12 @@ export class UserService {
       async verifyAccount(userId: string): Promise<any> {
         await this.userModel.findByIdAndUpdate(userId, { verified: true, verificationToken: null });
       }
+      async findAllByUsername(username: string): Promise<any> {
+        const users = await this.userModel.find({
+          username: { $regex: new RegExp(username, 'i') }
+        });
+        return users;
+    }
   
     
 }

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, NotFoundException, Param, Patch, Post, Put, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, NotFoundException, Param, Patch, Post, Put, Query, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthDto } from 'src/dto/auth.dto';
 import { Tokens } from 'src/types/tokens.type';
@@ -27,6 +27,7 @@ import { User } from 'src/schemas/User.schema';
 import { UpdateUserDto } from 'src/dto/updateuser.dto';
 import { UpdateRolesPermissionsDto } from 'src/dto/updateRolesPermissions.dto';
 import { ClarifaiService } from './clarifai/clarifai.service';
+import { UserI } from 'src/schemas/user.interface';
 export const storage = {
     storage: diskStorage({
         destination: './uploads/profileimages',
@@ -332,6 +333,22 @@ async verifyAccount(@Param('token') token: string): Promise<any> {
   // Redirect the user to a page indicating successful verification
   return 'Account verified successfully';
 }
+@Get('find-by-username')
+@HttpCode(HttpStatus.OK)
+async findAllByUsername(@Query('username') username: string): Promise<UserI[]> {
+    const users = await this.userService.findAllByUsername(username);
+    return users.map(user => ({
+        _id: user._id,
+        email: user.email,
+        username: user.username,
+        password: user.password
+    }));
+}
+
+
+
+
+
 
 
 

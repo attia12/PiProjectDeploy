@@ -2,6 +2,8 @@
 
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Room } from "./Room.schema";
+import { JoinedRoom } from "./joined-room.schema";
+import { Message } from "./message.schema";
 
 
 @Schema()
@@ -36,6 +38,12 @@ verified: boolean;
 //   verificationToken: string;
 @Prop()
 verificationToken: string;
+
+@Prop({ type: [{ type: 'ObjectId', ref: 'JoinedRoom' }] })
+  joinedRooms: JoinedRoom[]; 
+
+  @Prop({ type: [{ type: 'ObjectId', ref: 'Message' }] })
+  messages: Message[];  
 
 
 
