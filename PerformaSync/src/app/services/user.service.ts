@@ -5,6 +5,7 @@ import {BehaviorSubject, catchError, filter, Observable, of, Subject, switchMap,
 import {jwtDecode} from "jwt-decode";
 import {Router} from "@angular/router";
 import {UserI} from "../back-module/user.interface";
+import { environment } from '../../environments/environment.development';
 export const ROLES = {
   SUPERADMIN: "ESUPERADMIN",
   ADMIN: "EADMIN",
@@ -17,7 +18,7 @@ export const ROLES = {
 })
 export class UserService {
 
-  baseUrl="https://piprojectdeploy.onrender.com"
+ 
   private userRolesSubject: BehaviorSubject<string[] | null>;
   userRoles$: Observable<string[] | null>;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
@@ -46,7 +47,7 @@ export class UserService {
   }
   login(user:any)
   {
-    return this.http.post(`${this.baseUrl}/user/login`,user).pipe(
+    return this.http.post(`${environment.baseUrl}/user/login`,user).pipe(
       tap((res:any)=>localStorage.setItem('access_token',res.access_token)),
       tap((res:any)=>localStorage.setItem('refresh_token',res.refresh_token)),
 
@@ -66,7 +67,7 @@ export class UserService {
     this.userRolesSubject.next(roles);
   }
   logout(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/logout`, {}).pipe(
+    return this.http.post(`${environment.baseUrl}/user/logout`, {}).pipe(
       tap(() => {
         localStorage.clear();
       })
@@ -82,11 +83,11 @@ getUserIdFromToken(){
 }
 getUserById(id:any)
 {
-  return this.http.get(`${this.baseUrl}/user/getUserById/${id}`);
+  return this.http.get(`${environment.baseUrl}/user/getUserById/${id}`);
 }
 getUserImage(imageName:string)
 {
-  return this.http.get(`${this.baseUrl}/user/profile-image/${imageName}`, { responseType: 'blob' })
+  return this.http.get(`${environment.baseUrl}/user/profile-image/${imageName}`, { responseType: 'blob' })
 
 }
 uploadImage(file: File):Observable<any>
@@ -94,30 +95,30 @@ uploadImage(file: File):Observable<any>
   const formData: FormData = new FormData();
   formData.append('file', file, file.name);
 
-  return this.http.post<any>(`${this.baseUrl}/user/upload`, formData);
+  return this.http.post<any>(`${environment.baseUrl}/user/upload`, formData);
 
 }
 getOtp(email:any)
 {
-  return this.http.post(`${this.baseUrl}/user/sendOtp`,{email});
+  return this.http.post(`${environment.baseUrl}/user/sendOtp`,{email});
 }
 resetPassword(body:any)
 {
-  return this.http.post(`${this.baseUrl}/user/reset-password`,body);
+  return this.http.post(`${environment.baseUrl}/user/reset-password`,body);
 }
 signup(user:any)
 {
-  return this.http.post(`${this.baseUrl}/user/signup`,user);
+  return this.http.post(`${environment.baseUrl}/user/signup`,user);
 
 }
 getAllUserExceptSuperAdmin()
 {
-  return this.http.get(`${this.baseUrl}/user/getAllUsers`);
+  return this.http.get(`${environment.baseUrl}/user/getAllUsers`);
 
 }
 updatePermissionAndRoles(userId:any,body:any)
 {
-  return this.http.patch(`${this.baseUrl}/user/updateRolesPermissions/${userId}`,body, { responseType: 'text' });
+  return this.http.patch(`${environment.baseUrl}/user/updateRolesPermissions/${userId}`,body, { responseType: 'text' });
 
 }
   getUserUpdatedSubject() {
@@ -129,11 +130,11 @@ updatePermissionAndRoles(userId:any,body:any)
   }
   deleteUserAccount(userId:any)
   {
-    return this.http.delete(`${this.baseUrl}/user/deleteUser/${userId}`, { responseType: 'text' })
+    return this.http.delete(`${environment.baseUrl}/user/deleteUser/${userId}`, { responseType: 'text' })
   }
   loginWithFaceRecognition(capturedImage: string): Observable<any> {
 
-    return this.http.post<any>(`${this.baseUrl}/user/login-face-recognition`, { userImageUrl: capturedImage }).pipe(
+    return this.http.post<any>(`${environment.baseUrl}/user/login-face-recognition`, { userImageUrl: capturedImage }).pipe(
       tap((res:any)=>{
 
         if (res && res.tokens && res.tokens.access_token && res.tokens.refresh_token) {
@@ -158,7 +159,7 @@ updatePermissionAndRoles(userId:any,body:any)
       'Authorization': `Bearer ${refreshToken}`
     });
 
-    return this.http.post<any>(`${this.baseUrl}/user/refresh`, null, { headers })
+    return this.http.post<any>(`${environment.baseUrl}/user/refresh`, null, { headers })
       .pipe(
         tap((tokens: { access_token: string, refresh_token: string }) => {
           this.storeTokens(tokens.access_token, tokens.refresh_token);
@@ -173,7 +174,7 @@ updatePermissionAndRoles(userId:any,body:any)
   }
 
   findByUsername(username: string): Observable<UserI[]> {
-    return this.http.get<UserI[]>(`${this.baseUrl}/user/find-by-username?username=${username}`).pipe(
+    return this.http.get<UserI[]>(`$${environment.baseUrl}/user/find-by-username?username=${username}`).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error fetching users:', error);
         // Check if the error is due to unexpected HTML response
