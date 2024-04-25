@@ -50,4 +50,8 @@ export class SignUpComponent {
 
     return this.userForm.invalid || this.userForm.value.password !== this.userForm.value.confirmPassword;
   }
+  navigateToLogin() {
+    this._router.navigate(['/login']);
+
+  }
 }

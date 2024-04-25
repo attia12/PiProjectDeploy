@@ -39,7 +39,7 @@
                     <div class="social-login">
                       <div class="d-flex align-items-center justify-content-center flex-wrap gap-3 p-0">
                         <div class="flex-first flex-fill mob-100">
-                          <a href="http://localhost:3000/user/google" class="btn bg-white border border-2 text-dark full-width">
+                          <a (click)="sendGoogleRequest()" class="btn bg-white border border-2 text-dark full-width">
                             <i class="fa-brands fa-google-plus-g color--googleplus me-2"></i>
                             <span   class="fw-medium text-md" >Signin with Google</span>
                           </a>
@@ -83,7 +83,7 @@
                           </div>
                         </div>
                         <div class="modal-flex-last">
-                          <a href="/forgotpassword" class="text-primary fw-medium">Forget Password?</a>
+                          <a (click)="navigateToForgotPassword()" class="text-primary fw-medium">Forget Password?</a>
                         </div>
                       </div>
                     </div>

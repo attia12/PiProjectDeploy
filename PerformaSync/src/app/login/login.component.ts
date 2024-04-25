@@ -2,6 +2,7 @@ import {Component, inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
+import { environment } from '../../environments/environment.development';
 
 
 
@@ -84,6 +85,16 @@ export class LoginComponent implements OnInit{
   }
   navigateToSignUp() {
     this.router.navigate(['/signup']);
+
+  }
+  navigateToForgotPassword()
+  {
+    this.router.navigate(['/forgotpassword']);
+
+  }
+  sendGoogleRequest()
+  {
+    this.router.navigate([`'${environment.baseUrl}/user/google'`]);
 
   }
 }
