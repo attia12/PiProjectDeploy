@@ -17,7 +17,11 @@ export class MeetingService {
        return meeting.save();
     }
  
-    async findAllByUser(userId: string): Promise<Meeting[]> {
-        return this.meetingModel.find({ user: userId }).exec();
+    async findAllByUser(): Promise<Meeting[]> {
+        return this.meetingModel.find().exec();
+      }
+      async findMeetByUser(userId:any)
+      {
+        return this.meetingModel.find({user:userId}).exec();
       }
 }

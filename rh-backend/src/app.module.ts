@@ -10,6 +10,9 @@ import { MeetingModule } from './meeting/meeting.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ChatModule } from './chat/chat.module';
+import { EvaluationModule } from './evaluation/evaluation.module';
+import { TimeEntryModule } from './time-entry/time-entry.module';
+import { MisssionModule } from './misssion/misssion.module';
 
 
 
@@ -38,7 +41,10 @@ MailerModule.forRoot({
     from: '"No Reply" <noreply@example.com>',
   },
 }),
-ChatModule],
+ChatModule,
+EvaluationModule,
+TimeEntryModule,
+MisssionModule],
   controllers: [],
   providers: [
     {

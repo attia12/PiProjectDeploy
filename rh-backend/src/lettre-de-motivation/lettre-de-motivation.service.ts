@@ -17,7 +17,7 @@ export class LettreDeMotivationService {
       return lettre.save();
     }
     async afficherToutesLettres(): Promise<LettreDeMotivation[]> {
-        return await this.lettreModel.find().exec();
+        return await this.lettreModel.find().populate('user').exec();
       }
       async supprimerLettre(id:string): Promise<LettreDeMotivation[]> {
         return await this.lettreModel.findByIdAndDelete(id);
@@ -29,4 +29,9 @@ export class LettreDeMotivationService {
         }
         return lettre;
       }
+      
+    async getLettreDeMotivationByUser(userId: string): Promise<LettreDeMotivation | null> {
+      return this.lettreModel.findOne({ user: userId }).exec();
+  }
+  
 }

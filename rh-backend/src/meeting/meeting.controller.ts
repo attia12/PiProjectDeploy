@@ -14,8 +14,13 @@ export class MeetingController {
         return this.meetingSerivce.addMeeting(meetDto,id);
     }
     
-  @Get('byUser')
-  async findAllByUser(@GetCurrentUser() userId: string): Promise<Meeting[]> {
-    return this.meetingSerivce.findAllByUser(userId);
+  @Get('meets')
+  async findAllByUser(): Promise<Meeting[]> {
+    return this.meetingSerivce.findAllByUser();
   }
+  @Get('meetByUser/:userId')
+  async findMeetByUser(@Param('userId') userId :string): Promise<Meeting[]> {
+    return this.meetingSerivce.findMeetByUser(userId);
+  }
+  
 }

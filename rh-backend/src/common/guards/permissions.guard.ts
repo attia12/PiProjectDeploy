@@ -13,21 +13,21 @@ export class PermissionsGuard implements CanActivate {
         const requiredRoles = this.reflector.get<string[]>('roles', context.getHandler());
     
         if (!requiredPermissions && !requiredRoles) {
-          return true; // No permissions or roles required, allow access
+          return true; 
         }
     
         const { user } = context.switchToHttp().getRequest();
         console.log('this is the user from the guar User:', user);
     
         if (requiredRoles && requiredRoles.length > 0 && !user.roles.some(role => requiredRoles.includes(role))) {
-          return false; // User does not have required role
+          return false; 
         }
     
         if (requiredPermissions && requiredPermissions.length > 0 && !user.permissions.some(permission => requiredPermissions.includes(permission))) {
-          return false; // User does not have required permission
+          return false; 
         }
     
-        return true; // User has required role and/or permissio
+        return true; 
     }
 
 }

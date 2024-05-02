@@ -333,6 +333,18 @@ export class UserService {
         });
         return users;
     }
+
+    async getUserNameById(userId: string): Promise<String> {
+        const user = await this.userModel.findById(userId);
+        if (!user) {
+            throw new NotFoundException('User not found');
+        }
+        return user.username;
+    }
+    async getUserIdByUsername(username: string): Promise<string | undefined> {
+        let user = await this.userModel.findOne({username});
+        return user._id.toString(); 
+      }
   
     
 }

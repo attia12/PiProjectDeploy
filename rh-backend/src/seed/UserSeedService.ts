@@ -16,7 +16,7 @@ export class UserSeedService {
     }
     async seedUsers() {
         const usersToSeed = [
-          { username: 'user1', email: 'user1@example.com', password: 'password1', roles: ['superadmin'], permissions: [],verified:true },
+          { username: 'user1', email: 'user1@example.com', password: 'password1', roles: ['superadmin'], permissions: ['read:user'],verified:true },
           { username: 'user2', email: 'user2@example.com', password: 'password2', roles: ['company'], permissions: [],verified:true },
           
         ];

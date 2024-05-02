@@ -5,6 +5,7 @@ import { LettreDeMotivationService } from './lettre-de-motivation.service';
 import { GetCurrentUser } from 'src/common/decorators/get-current-user.decoraot';
 import { User } from 'src/schemas/User.schema';
 import { AuthGuard } from '@nestjs/passport';
+import { LettreDeMotivation } from 'src/schemas/LettreDeMotivation.schema';
 
 @Controller('lettre-de-motivation')
 export class LettreDeMotivationController {
@@ -15,10 +16,7 @@ export class LettreDeMotivationController {
     @UseInterceptors(FileInterceptor('cv'))
     async insererLettre(@UploadedFile() file: Express.Multer.File, @Body() lettreDto: LettreDeMotivationDto, @GetCurrentUser() user: any) {
       if (!file) {
-        throw new BadRequestException('No file uploaded');
-      }
-      if (!['image/jpeg', 'image/jpg', 'image/png'].includes(file.mimetype)) {
-        throw new BadRequestException('Invalid file format. Only JPEG, JPG, and PNG images are allowed.');
+        throw new BadRequestException('No fileeee uploaded');
       }
       lettreDto.cv = file; 
       return this.lettreService.insererLettre(lettreDto,user.sub);
@@ -35,5 +33,9 @@ export class LettreDeMotivationController {
   @Put('modifier/:id')
   async modifierLettre(@Param('id') id:string) {
     return this.lettreService.verifierLettre(id);
+  }
+  @Get(':userId')
+  async getLettreDeMotivationByUser(@Param('userId') userId: string): Promise<LettreDeMotivation | null> {
+      return this.lettreService.getLettreDeMotivationByUser(userId);
   }
 }

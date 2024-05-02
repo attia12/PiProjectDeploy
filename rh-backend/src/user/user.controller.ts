@@ -346,6 +346,42 @@ async findAllByUsername(@Query('username') username: string): Promise<UserI[]> {
 }
 
 
+@Get('/getUserNameById/:id')
+    @HttpCode(HttpStatus.OK)
+    
+    async getUserNameById(@Param('id') id:string)
+    {
+        const isValid=mongoose.Types.ObjectId.isValid(id);
+           if(!isValid) throw new HttpException('User not found',404);
+           let findUser= await this.userService.getUserNameById(id);
+           if(!findUser)throw new HttpException('User not found',404);
+           let response = {
+                    username:  findUser,
+           }
+           return { username: response.username };
+  };
+
+  @Get('/getUserIdByUsername/:username')
+@HttpCode(HttpStatus.OK)
+async getUserIdByUsername(@Param('username') username: string) {
+  try {
+    const user = await this.userService.getUserIdByUsername(username); // Assuming getUserByUsername exists in your userService
+
+    if (!user) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
+
+    return user;
+  } catch (error) {
+    if (error instanceof HttpException) {
+      throw error; // Re-throw HttpException for consistent error handling
+    } else {
+      throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+}
+
+
 
 
 
