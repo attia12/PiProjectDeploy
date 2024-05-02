@@ -1,92 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LettreService } from '../../services/lettre.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ModalModule } from '@developer-partners/ngx-modal-dialog';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+import { MeetingModalComponent } from '../meeting-modal/meeting-modal.component';
 
 
 @Component({
   selector: 'app-afficher-lettres',
   standalone: true,
-  imports: [FormsModule,CommonModule,ModalModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './afficher-lettres.component.html',
   styleUrl: './afficher-lettres.component.css'
 })
 export class AfficherLettresComponent implements OnInit {
-  lettres: any=[];
+  lettres: any = [];
   selectedDescription = '';
-  showMeetingModal: boolean = false;
-  showModalBox = false;
-  meetingFormModel: any = {
-    lienMeet: '',
-    dateDebut: '',
-    time: ''
-  };
-  selectedUserId: string = '';
 
-  constructor(private es: LettreService){};
-  
+  constructor(private es: LettreService, public dialog: MatDialog) { }
+
   ngOnInit(): void {
     this.loadLettres();
   }
-
   loadLettres() {
     this.es.getLettres().subscribe((lettres) => {
       this.lettres = lettres;
-      this.lettres.forEach((l:any) => {
-        this.es.getUserName(l.user).subscribe((user) => {
-          l.userName = user.username;
-        });
-      });
+      console.log("the lettre de motivation ",lettres)
+    
     });
   }
-  
-  delete(id: string) {
-    this.es.deleteLettre(id).subscribe(() => {
-      console.log("deleted successfully");
-      this.loadLettres();
-    }, error => {
-      console.log(error);
+
+  openDescriptionModal(description: string) {
+    this.selectedDescription = description;
+    this.dialog.open(ModalComponent, {
+      width: '400px',
+      data: { description: this.selectedDescription }
     });
   }
 
   openMeetingModal(id: string, userId: string) {
-    this.selectedUserId = userId;
-    
-    this.showMeetingModal = true;
-    console.log(this.showMeetingModal);
-  }
-
-  closeMeetingModal() {
-    this.showMeetingModal = false;
-  }
-
-  submitMeetingForm() {
-    this.es.sendMeet(this.meetingFormModel, this.selectedUserId).subscribe(() => {
-      console.log('Meeting scheduled successfully');
-      this.meetingFormModel = {
-        lienMeet: '',
-        dateDebut: '',
-        time: ''
-      };
-      this.showMeetingModal = false;
-    }, error => {
-      console.error('Error scheduling meeting:', error);
+    this.dialog.open(MeetingModalComponent, {
+      width: '400px',
+      data: { id, userId }
     });
   }
-
-  confirmDelete(id: string) {
-    if (confirm('Are you sure you want to delete this letter?')) {
-      this.delete(id);
-    }
-  }
-  closeModal() {
-    this.showModalBox = false;
-  }
-  showModal(description: string) {
-    this.selectedDescription = description;
-    this.showModalBox = true; // Assurez-vous que showModalBox est correctement défini dans votre composant
-  }
-  
 }

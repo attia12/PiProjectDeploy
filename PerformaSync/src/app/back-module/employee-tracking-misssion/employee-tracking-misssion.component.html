@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card margin">
+                    <div class="card-header card-header-danger">
+                        <h5 class="card-title " style="margin-top: 2%;">Evaluation Table</h5>
+
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                    <th  class=""><i class="fa-solid fa-user me-1"></i>
+                                        Employees</th>
+                                    <th  class=""><i class="fa-solid fa-user-tie me-1"></i>
+                                        Manager</th>
+                                    <th  class=""><i class="fa-solid fa-calendar me-1"></i>Start Date
+                                    </th>
+                                    <th  class=""><i class="fa-solid fa-calendar me-1"></i>End Date
+                                    </th>
+                                    <th  class=""><i class="fa-solid fa-map-marker me-1"></i>Location
+                                    </th>
+                                    <th  class=""><i class="fa-solid fa-info-circle me-1"></i>Description</th>
+                                    <th  class=""><i class="fa-solid fa-circle me-1"></i>Status</th>
+                                </thead>
+                                <tbody>
+
+                                    @for( mission of missions; track missions._id){
+                                    <tr>
+                                        <td data-label="Assigned Employees">
+                                            <ng-container >
+
+                                                <ng-container *ngFor="let employee of mission.assignedEmployees">
+                                                    {{ employee.username }}
+                                                    <span *ngIf="!last; else elseBlock">, </span>
+                                                    <ng-template #elseBlock></ng-template>
+                                                </ng-container>
+                                            </ng-container>
+
+                                        </td>
+                                        <td data-label="Assigned Manager">{{ mission.assignedManager.username }}</td>
+                                        <td data-label="Start Date">{{ mission.startDate | date }}</td>
+                                        <td data-label="End Date">{{ mission.endDate | date }}</td>
+                                        <td data-label="Location">{{ mission.location }}</td>
+                                        <td data-label="Description">{{ mission.description }}</td>
+                                        <td data-label="Status">{{ mission.status }}</td>
+                                        
+
+                                        <td class="d-flex f-row">
+                                            <a (click)="openSubmitCandidateModal(mission)" type="submit"> <fa-icon
+                                                    class=" text-warning" [icon]="faInfo"
+                                                    style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

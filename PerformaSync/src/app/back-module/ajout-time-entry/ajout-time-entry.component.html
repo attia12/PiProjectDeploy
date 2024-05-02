@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+
+    <main id="main" class="main">
+
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Pointage</h5>
+
+                            <!-- General Form Elements -->
+                            <form (ngSubmit)="onSubmit()" [formGroup]="TimeEntryForm">
+
+                      
+
+                             
+                                <div class="row mb-3">
+
+                                    <label class="col-sm-2 col-form-label">Temps travaillé</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example" formControlName="tempsDeTravail">
+                                            <option value="une journée">une journée</option>
+                                            <option value="un demi">un demi journée</option>
+                                            <option value="un quart">un quart de journée</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="row mb-3">
+
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                                    </div>
+                                </div>
+
+
+                            </form><!-- End General Form Elements -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+
+</body>
+
+</html>

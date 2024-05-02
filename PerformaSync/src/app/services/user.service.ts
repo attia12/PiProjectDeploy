@@ -174,7 +174,7 @@ updatePermissionAndRoles(userId:any,body:any)
   }
 
   findByUsername(username: string): Observable<UserI[]> {
-    return this.http.get<UserI[]>(`$${environment.baseUrl}/user/find-by-username?username=${username}`).pipe(
+    return this.http.get<UserI[]>(`${environment.baseUrl}/user/find-by-username?username=${username}`).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error('Error fetching users:', error);
         // Check if the error is due to unexpected HTML response
@@ -197,6 +197,11 @@ updatePermissionAndRoles(userId:any,body:any)
     }
     return null;
   }
+
+  getUserNameById(id:any)
+{
+  return this.http.get(`${environment.baseUrl}/user/getUserNameById/${id}`);
+}
  
 
   

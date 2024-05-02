@@ -26,6 +26,16 @@ export const ROUTES: RouteInfo[] = [
   { path: '/notifications',roles:[''], title: 'Notifications',  icon:'notifications', class: '',isVisible:true },
   { path: '/upgrade', roles:[''],title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro',isVisible:true },
   { path: '/back/users', roles:['superadmin'], title: 'User List', icon:'group', class: '', isVisible:true },
+  { path: '/back/ListTimeEntries', roles:['admin','superadmin'],title: 'List TimeEntries',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/ListEvaluation', roles:['admin','superadmin'],title: 'List Evaluation',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/EmployeeDashboard', roles:['employee'],title: 'Pointage',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/EmployeeEntryList', roles:['company'],title: 'List Employee Pointage',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/mission', roles:['company'],title: 'List Mission',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/trackingmisssion', roles:['employee'],title: 'Missions Available',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/meets', roles:['admin','superadmin'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/meetEmployee', roles:['employee'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
+  
+  
 
 ];
 interface Route {

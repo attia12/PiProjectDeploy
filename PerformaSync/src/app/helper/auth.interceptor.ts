@@ -1,11 +1,13 @@
 import {
 
 
+  HttpErrorResponse,
   HttpInterceptorFn
 
 } from '@angular/common/http';
 import {inject} from "@angular/core";
 import {UserService} from "../services/user.service";
+import { catchError, throwError } from 'rxjs';
 
 
 
@@ -25,7 +27,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       headers: req.headers.set('Authorization',
         'Bearer ' + token)
     });
-    return next(cloned);
+    return next(cloned).pipe(catchError((error:HttpErrorResponse)=>{
+      if (error.status === 403 || error.status === 401) {
+        localStorage.clear();
+      }
+      return throwError(error);
+    }));
   } else {
     return next(req);
   }

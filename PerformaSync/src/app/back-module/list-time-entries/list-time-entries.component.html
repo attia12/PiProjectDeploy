@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card margin">
+                    <div class="card-header card-header-danger">
+                        <h5 class="card-title " style="margin-top: 2%;">Time Entry Table</h5>
+                        <a type="submit" href="back/AjoutTimeEntry"
+                            style=" background-color: white  ; border-radius: 50%; margin-top: 2%;"><fa-icon
+                                class=" text-success" [icon]="faAdd"
+                                style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
+
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                    <th>
+                                        Employee
+                                        <!-- @if (isRotatedAl) {
+                                        <a (click)="trierEmlpoyeeByAlphabetics()"> <fa-icon
+                                                [icon]="faArrowUp"></fa-icon></a>
+                                        }@else{
+                                        <a (click)="trierEmlpoyeeByAlphabetics()"> <fa-icon
+                                                [icon]="faArrowDown"></fa-icon></a>
+                                        } -->
+                                    </th>
+                                    <th>
+                                        Date
+                                        <!-- @if (isRotatedAv) {
+                                        <a (click)="trierEmlpoyeeByRating()"> <fa-icon [icon]="faArrowUp"></fa-icon></a>
+                                        }@else{
+                                        <a (click)="trierEmlpoyeeByRating()"> <fa-icon
+                                                [icon]="faArrowDown"></fa-icon></a>
+                                        } -->
+
+                                    </th>
+                                    <th>
+                                      Temps De Travail
+                                        <!-- @if (isRotatedAv) {
+                                                                            <a (click)="trierEmlpoyeeByRating()"> <fa-icon [icon]="faArrowUp"></fa-icon></a>
+                                                                            }@else{
+                                                                            <a (click)="trierEmlpoyeeByRating()"> <fa-icon
+                                                                                    [icon]="faArrowDown"></fa-icon></a>
+                                                                            } -->
+
+                                    </th>
+                                  
+                                    <th>
+                                        Status
+                                        <!-- @if (isRotatedAv) {
+                                                                            <a (click)="trierEmlpoyeeByRating()"> <fa-icon [icon]="faArrowUp"></fa-icon></a>
+                                                                            }@else{
+                                                                            <a (click)="trierEmlpoyeeByRating()"> <fa-icon
+                                                                                    [icon]="faArrowDown"></fa-icon></a>
+                                                                            } -->
+
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    @for( data of listTimeEntries; track listTimeEntries){
+                                    <tr>
+                                       
+                                        <td>{{data?.employee}}</td>
+                                        <td>{{data?.date |date:'mediumDate'}}</td>
+                                        <td>{{data?.tempsDeTravail }}</td>
+                                        <td>{{data?.status}}</td>
+                                        <!-- <td>{{data?.justification}}</td> -->
+
+                                        <td class="d-flex f-row">
+                                            <a href="back/ModifierTimeEntry/{{data._id}}" type="submit"> <fa-icon
+                                                    class=" text-warning" [icon]="faEdit"
+                                                    style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
+
+
+                                            <a type="submit" (click)="onDeleteTimeEntry(data._id)"><fa-icon
+                                                    class=" text-danger" [icon]="faDeleteLeft"
+                                                    style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

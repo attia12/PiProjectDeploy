@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card margin">
+            <div class="card-header card-header-danger">
+              <h5 class="card-title">Meets</h5>
+            </div>
+  
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>lienMeet</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Accepté?</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let m of meets">
+                      <td>{{m.lienMeet}}</td>
+                      <td>{{m.dateDebut | date}}</td>
+                      <td>{{m.time}}</td>
+                      <td>{{m.userIsAccepted}}</td>
+                      <td class="d-flex f-row">
+                        <button type="button" class="btn btn-warning" [routerLink]="['/back/sign']">Sign a contract</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

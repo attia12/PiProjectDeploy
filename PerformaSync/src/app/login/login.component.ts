@@ -67,9 +67,9 @@ export class LoginComponent implements OnInit{
     } else if (roles.includes('admin')) {
       this.router.navigate(['/back']);
     } else if (roles.includes('company')) {
-      this.router.navigate(['/company-dashboard']);
+      this.router.navigate(['/back']);
     } else if (roles.includes('employee')) {
-      this.router.navigate(['/front']);
+      this.router.navigate(['/back']);
     } else {
       console.log("Unknown roles");
       // Navigate to a default page or handle as needed
