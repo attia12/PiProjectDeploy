@@ -13,6 +13,8 @@ import { ChatModule } from './chat/chat.module';
 import { EvaluationModule } from './evaluation/evaluation.module';
 import { TimeEntryModule } from './time-entry/time-entry.module';
 import { MisssionModule } from './misssion/misssion.module';
+import { CongeModule } from './conge/conge.module';
+
 
 
 
@@ -44,7 +46,8 @@ MailerModule.forRoot({
 ChatModule,
 EvaluationModule,
 TimeEntryModule,
-MisssionModule],
+MisssionModule,
+CongeModule],
   controllers: [],
   providers: [
     {
