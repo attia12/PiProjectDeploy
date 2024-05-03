@@ -89,7 +89,7 @@ export class ModifierTimeEntryComponent {
     console.log(data);
     this.services.updateTimeEntry(this.id, timeEntry).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['back/ListTimeEntries'])
+      this.router.navigate(['back/EmployeeEntryList'])
 
     });
   }
