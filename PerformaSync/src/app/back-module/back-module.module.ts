@@ -8,6 +8,7 @@ import {MatButton} from "@angular/material/button";
 import {SocketIoConfig, SocketIoModule} from "ngx-socket-io";
 import {ChatService} from "./chat/chat.service";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { environment } from '../../environments/environment.development';
 
 export function tokenGetter()
 {
@@ -15,7 +16,7 @@ export function tokenGetter()
   return token ? token : '';
 }
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
+const config: SocketIoConfig = { url: `${environment.baseUrl}`, options: {
   extraHeaders:{
     Authorization:tokenGetter()
   }
