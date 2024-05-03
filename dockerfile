@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 # Copier le package.json du projet front
 COPY rh-backend/package.json rh-backend/package-lock.json ./
-RUN npm install
+RUN npm install && npm cache clean --force
 
 # Copier le reste du projet front
 COPY rh-backend .
