@@ -45,7 +45,7 @@
                       <img [src]="l.cv" alt="CV" class="img-thumbnail" style="width: 100px; height: 100px;">
                     </td>
                     <td class="d-flex f-row">
-                      <a (click)="openMeetingModal(l._id, l.user)" type="submit"> <fa-icon class=" text-warning"
+                      <a (click)="openMeetingModal(l._id, l.user._id)" type="submit"> <fa-icon class=" text-warning"
                           [icon]="faVideo" style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
                       <a (click)="confirmDelete(l._id)" type="submit"> <fa-icon class=" text-danger"
                           [icon]="faDeleteLeft" style="font-size: 2rem; margin: 1rem;"></fa-icon></a>
