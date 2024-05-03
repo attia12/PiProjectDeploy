@@ -34,6 +34,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/back/trackingmisssion', roles:['employee'],title: 'Missions Available',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/back/meets', roles:['admin','superadmin'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/back/meetEmployee', roles:['employee'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/listConge', roles:['admin','superadmin'],title: 'Congee',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/addConge', roles:['admin','superadmin'],title: 'Add Congee',  icon:'library_books', class: '' ,isVisible:true},
   
   
 

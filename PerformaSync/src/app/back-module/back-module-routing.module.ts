@@ -21,6 +21,9 @@ import { EmployeeTrackingMisssionComponent } from './employee-tracking-misssion/
 import { MeetsComponent } from './meets/meets.component';
 import { SendcontractComponent } from './sendcontract/sendcontract.component';
 import { EmployeeMeetinsComponent } from './employee-meetins/employee-meetins.component';
+import { CongeListComponent } from './conge-list/conge-list.component';
+import { AddCongeComponent } from './add-conge/add-conge.component';
+import { CongeModifyComponent } from './conge-modify/conge-modify.component';
 
 
 
@@ -46,6 +49,9 @@ const routes: Routes = [
       {path:'meets',component:MeetsComponent},
       {path:'sign',component:SendcontractComponent},
       {path:'meetEmployee',component:EmployeeMeetinsComponent},
+      {path:'listConge',component:CongeListComponent},
+      {path:'addConge',component:AddCongeComponent},
+      {path:'modifyConge/:id',component:CongeModifyComponent},
 
     ]
 

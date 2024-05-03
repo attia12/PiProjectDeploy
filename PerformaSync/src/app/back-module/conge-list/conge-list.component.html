@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Conge List</h2>
+   
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Days Left</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let conge of Conge; let i = index">
+        <td>{{ conge.date_deb | date }}</td>
+        <td>{{ conge.date_fin | date }}</td>
+        <td>{{ conge.jours_restants }}</td>
+        <td>{{ conge.statutCon }}</td>
+        <td>{{ conge.typeCon }}</td>
+        <td>
+          <button class="btn" (click)="deleteUni(conge._id)">Delete</button>
+          <button class="btn" (click)="updateConge(conge)">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

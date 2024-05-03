@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Add Conge</h2>
+    <form (ngSubmit)="AddConge()">
+      <div class="form-group">
+        <label for="date_deb">Start Date:</label>
+        <input type="date" class="form-control" id="date_deb" name="date_deb" [(ngModel)]="NewConge.date_deb" required>
+      </div>
+      <div class="form-group">
+        <label for="date_fin">End Date:</label>
+        <input type="date" class="form-control" id="date_fin" name="date_fin" [(ngModel)]="NewConge.date_fin" required>
+      </div>
+      <div class="form-group">
+        <label for="joursRestants">Days Left:</label>
+        <input type="number" class="form-control" id="joursRestants" name="joursRestants" [(ngModel)]="NewConge.jours_restants" required>
+      </div>
+      <div class="form-group">
+        <label for="statut">Statut:</label>
+        <select class="form-control" id="statut" name="statut" [(ngModel)]="NewConge.statutCon" required>
+          <option value="ENATTENTE">Pending</option>
+          <option value="VALIDE">Approved</option>
+          <option value="REFUSE">Rejected</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <select class="form-control" id="type" name="type" [(ngModel)]="NewConge.typeCon" required>
+          <option value="CONGEPAYES">Paid Leave</option>
+          <option value="RTT">Rtt</option>
+          <option value="MALADIE">Sick Leave</option>
+        </select>
+      </div>
+      <button type="submit" class="btn">Add Leave</button>
+      <button class="btn" (click)="navigateToListConge()">Leaves List</button>
+      <button class="btn" >Add</button>
+    </form>
+  </div>
