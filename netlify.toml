@@ -1,0 +1,16 @@
+[build]
+  command = "npm install --force && npm run build"
+
+  # Set the base directory for the build
+  base = "PerformaSync"
+
+  # Publish directory for the build output
+  publish = "dist/browser"
+
+
+
+# Add redirects if needed
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
