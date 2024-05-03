@@ -24,6 +24,7 @@ import { EmployeeMeetinsComponent } from './employee-meetins/employee-meetins.co
 import { CongeListComponent } from './conge-list/conge-list.component';
 import { AddCongeComponent } from './add-conge/add-conge.component';
 import { CongeModifyComponent } from './conge-modify/conge-modify.component';
+import { MissionsListComponent } from './missions-list/missions-list.component';
 
 
 
@@ -52,6 +53,7 @@ const routes: Routes = [
       {path:'listConge',component:CongeListComponent},
       {path:'addConge',component:AddCongeComponent},
       {path:'modifyConge/:id',component:CongeModifyComponent},
+      {path:'Listmission',component:MissionsListComponent},
 
     ]
 

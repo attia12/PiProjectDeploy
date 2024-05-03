@@ -15,6 +15,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './employee-pointage-list.component.css'
 })
 export class EmployeePointageListComponent {
+  isLoading=true
   listTimeEntries: TimeEntry[]
   Idemployee:string
   constructor(private service: TimeEntryService,private serviceUser: UserService, private router: Router) { }
@@ -28,7 +29,9 @@ export class EmployeePointageListComponent {
           this.listTimeEntries.forEach((t:TimeEntry) => {
               this.Idemployee=t.employee
               // this.userid=this.serviceUser.getUserIdFromToken()
-              this.serviceUser.getUserNameById(t.employee).subscribe((name: { username: string })=>{t.employee=name.username})
+              this.serviceUser.getUserNameById(t.employee).subscribe((name: { username: string })=>{t.employee=name.username
+                this.isLoading=false
+              })
                
               console.log(this.Idemployee)});
           console.log(data)

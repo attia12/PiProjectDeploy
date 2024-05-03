@@ -20,6 +20,7 @@ import {faInfo} from "@fortawesome/free-solid-svg-icons";
   styleUrl: './employee-tracking-misssion.component.css'
 })
 export class EmployeeTrackingMisssionComponent {
+  isLoading=true
   missions:any
   constructor(private service:MissionService,private dialog: MatDialog){  }
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class EmployeeTrackingMisssionComponent {
     this.service.getMissionsPending().subscribe((data:any) =>{
       this.missions=data;
       console.log(this.missions)
+      this.isLoading=false
   },error =>{
       console.log(error);
     })

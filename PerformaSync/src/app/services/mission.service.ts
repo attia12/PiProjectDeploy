@@ -10,7 +10,7 @@ export class MissionService {
   constructor(private http:HttpClient) {}
   getMissions()
 {
-  return this.http.get(`${environment.baseUrl}/misssion`);
+  return this.http.get(`${environment.baseUrl}/misssion/list`);
 }
 getMissionsByCompanyId(companyId: string) {
   return this.http.get(`${environment.baseUrl}/misssion/company/${companyId}`);

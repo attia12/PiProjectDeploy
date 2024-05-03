@@ -37,7 +37,7 @@
     .nav{
       .nav-item{
             &.active > a:not([data-toggle="collapse"]){
-                color: $font-color;
+                color: $gray-100;
                 opacity: 1;
                 @include shadow-big-color($font-color);
 
@@ -52,7 +52,7 @@
 @mixin set-background-color-button($color){
 
     li.active > a{
-        background-color: $color;
+        background-color: $purple-600;
         @include shadow-big-color($color);
     }
 }

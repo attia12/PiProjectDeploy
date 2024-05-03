@@ -7,7 +7,8 @@ import {NgIf} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 import {EditProfilComponent} from "../edit-profil/edit-profil.component";
 import {validate as uuidValidate} from 'uuid'
-
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-profil',
   standalone: true,
@@ -16,12 +17,14 @@ import {validate as uuidValidate} from 'uuid'
     MatButton,
     MatCardContent,
     MatCard,
-    NgIf
+    NgIf,
+    FaIconComponent
   ],
   templateUrl: './profil.component.html',
   styleUrl: './profil.component.css'
 })
 export class ProfilComponent implements OnInit{
+  faCheck=faCheckCircle
   user:any=null;
   userId:any;
   accessToken!: string | null;

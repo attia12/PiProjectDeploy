@@ -24,6 +24,7 @@ import { EvaluationService } from '../../services/evaluation.service';
   styleUrl: './list-evaluation.component.css'
 })
 export class ListEvaluationComponent {
+  isLoading=true
   faArrowUp=faArrowAltCircleUp
   faArrowDown=faArrowAltCircleDown
   faInfo=faInfoCircle
@@ -49,7 +50,9 @@ export class ListEvaluationComponent {
             this.list.forEach((l:Evaluation) => {
               this.Idemployee=l.employee
               // this.userid=this.serviceUser.getUserIdFromToken()
-              this.serviceUser.getUserNameById(this.Idemployee).subscribe((name: { username: string })=>{l.employee=name.username})
+              this.serviceUser.getUserNameById(this.Idemployee).subscribe((name: { username: string })=>{l.employee=name.username
+                this.isLoading=false})
+              
 
               console.log(this.Idemployee)});
           console.log(data)

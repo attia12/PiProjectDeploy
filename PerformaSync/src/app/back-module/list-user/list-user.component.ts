@@ -20,7 +20,7 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
   styleUrl: './list-user.component.css'
 })
 export class ListUserComponent implements OnInit,OnDestroy{
-
+  isLoading=true
   faArrowUp=faArrowAltCircleUp
   faArrowDown=faArrowAltCircleDown
   faInfo=faInfoCircle
@@ -60,6 +60,7 @@ export class ListUserComponent implements OnInit,OnDestroy{
         if (user.image) {
           this.getImageProfile(user);
         }
+        this.isLoading=false
       });
 
     },error => {

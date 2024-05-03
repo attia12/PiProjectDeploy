@@ -4,11 +4,9 @@
             <div class="col-md-12">
                 <div class="card margin">
                     <div class="card-header card-header-primary">
-                        <h5 class="card-title " style="margin-top: 2%;">List des missions</h5>
+                        <h5 class="card-title " style="margin-top: 2%;">Evaluation Table</h5>
 
-                        <!-- <a type="submit" href="back/AjoutEvaluation"
-                        style=" background-color: white  ; border-radius: 50%; margin-top: 2%;"><fa-icon
-                            class=" text-dark" [icon]="faAdd" style="font-size: 2rem; margin: 1rem;"></fa-icon></a> -->
+
                     </div>
 
                     <div class="card-body align-items-center">
@@ -67,10 +65,8 @@
                                         <td data-label="Location">{{ mission.location }}</td>
                                         <td data-label="Description">{{ mission.description }}</td>
                                         <td data-label="Status">{{ mission.status }}</td>
-                                        <td> <a (click)="openAddMissionModal()" class="btn-light-info btn-rounded btn-xs p-0" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" data-bs-title="Add"><i class="fa-solid fa-pen-to-square"></i>
-                                            </a></td>
-                                    
+                                        
+
                                     </tr>
                                     }
                                 </tbody>

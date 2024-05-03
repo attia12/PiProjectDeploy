@@ -20,6 +20,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './list-evaluation-employee.component.css'
 })
 export class ListEvaluationEmployeeComponent {
+  isLoading=true
   faEdit=faEdit
   faAdd=faAdd;
   faDeleteLeft=faRemove;
@@ -35,7 +36,9 @@ export class ListEvaluationEmployeeComponent {
           this.listEvaluations=data
           this.listEvaluations.forEach((t:Evaluation) => {
               // this.userid=this.serviceUser.getUserIdFromToken()
-              this.userService.getUserNameById(t.company).subscribe((name: { username: string })=>{t.company=name.username})
+              this.userService.getUserNameById(t.company).subscribe((name: { username: string })=>{t.company=name.username
+                this.isLoading=false
+              })
               });
         })
     

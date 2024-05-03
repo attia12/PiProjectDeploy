@@ -19,6 +19,7 @@ import { TimeEntryService } from '../../services/time-entry.service';
   styleUrl: './list-time-entries.component.css'
 })
 export class ListTimeEntriesComponent {
+  isLoading=true
   faEdit=faEdit
   faAdd=faAdd;
   faDeleteLeft=faRemove;
@@ -34,7 +35,9 @@ export class ListTimeEntriesComponent {
           this.listTimeEntries.forEach((t:TimeEntry) => {
               this.Idemployee=t.employee
               // this.userid=this.serviceUser.getUserIdFromToken()
-              this.serviceUser.getUserNameById(t.employee).subscribe((name: { username: string })=>{t.employee=name.username})
+              this.serviceUser.getUserNameById(t.employee).subscribe((name: { username: string })=>{t.employee=name.username
+                this.isLoading=false
+              })
                
               console.log(this.Idemployee)});
           console.log(data)

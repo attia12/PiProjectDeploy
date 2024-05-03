@@ -20,7 +20,6 @@ export const ROUTES: RouteInfo[] = [
   { path: '/back/profil',roles:['admin','superadmin','employee'], title: 'User Profile',  icon:'person', class: '' ,isVisible:true},
   { path: '/back/afficher',roles:['admin','superadmin'], title: 'Lettres de motivations',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/back/chat',roles:['admin','superadmin','employee'], title: 'Chat',  icon:'content_paste', class: '' ,isVisible:true},
-  { path: '/evalution', roles:['employee'],title: 'Evaluation',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/icons', roles:[''],title: 'Icons',  icon:'bubble_chart', class: '' },
   { path: '/maps', roles:[''],title: 'Maps',  icon:'location_on', class: '',isVisible:true },
   { path: '/notifications',roles:[''], title: 'Notifications',  icon:'notifications', class: '',isVisible:true },
@@ -35,8 +34,9 @@ export const ROUTES: RouteInfo[] = [
   { path: '/back/meets', roles:['admin','superadmin'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/back/meetEmployee', roles:['employee'],title: 'Meets',  icon:'library_books', class: '' ,isVisible:true},
   { path: '/back/listConge', roles:['admin','superadmin'],title: 'Congee',  icon:'library_books', class: '' ,isVisible:true},
-  { path: '/back/addConge', roles:['admin','superadmin'],title: 'Add Congee',  icon:'library_books', class: '' ,isVisible:true},
-  
+  { path: '/back/addConge', roles:['employee'],title: 'Add Congee',  icon:'library_books', class: '' ,isVisible:true},
+  { path: '/back/Listmission', roles:['admin','superadmin'],title: 'List Mission',  icon:'library_books', class: '' ,isVisible:true},
+
   
 
 ];
