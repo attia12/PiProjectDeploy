@@ -12,7 +12,7 @@ import { MessageService } from '../service/message/message.service';
 import { MessageI } from 'src/schemas/message.interface';
 import { JoinedRoomI } from 'src/schemas/joined-room.interface';
 
-@WebSocketGateway({cors:{origin:['https://hoppscotch.io','http://localhost:4200','http://localhost:3000']}})
+@WebSocketGateway({cors:{origin:['https://piprojectdeploy.onrender.com','https://hoppscotch.io','http://localhost:4200','http://localhost:3000']}})
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect,OnModuleInit {
   @WebSocketServer()
   server:Server;

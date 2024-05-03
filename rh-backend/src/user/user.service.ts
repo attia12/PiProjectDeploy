@@ -183,7 +183,7 @@ export class UserService {
     //    res.redirect(redirectUrl);
    
   // res.redirect(`http://localhost:4200/back/profil/${savedUser._id}`);
-  const redirectUrl = `http://localhost:4200/back/profil/${savedUser._id}?access_token=${jwtTokens.access_token}`;
+  const redirectUrl = `https://performasync.onrender.com/back/profil/${savedUser._id}?access_token=${jwtTokens.access_token}`;
 
         // Redirect the user to the constructed URL
         res.redirect(redirectUrl);
