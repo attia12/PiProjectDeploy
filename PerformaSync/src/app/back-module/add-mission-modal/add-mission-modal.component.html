@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Add New Mission</h2>
+<div mat-dialog-content>
+  <!-- Form inputs for mission data -->
+  <form #missionForm="ngForm" name="missionForm"> <!-- Add the ngForm directive and a name attribute to the form -->
+    <!-- Example input -->
+    <mat-form-field>
+      <input matInput placeholder="Mission Title" name="title" [(ngModel)]="mission.title" required>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Mission Description" name="description" [(ngModel)]="mission.description" required></textarea>
+      </mat-form-field>
+    <mat-form-field>
+      <input matInput type="date" placeholder="Start Date" name="startDate" [(ngModel)]="mission.startDate" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="date" placeholder="End Date" name="endDate" [(ngModel)]="mission.endDate" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Status" name="status" [(ngModel)]="mission.status" required>
+        <mat-option value="pending">Pending</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+        <mat-option value="inProgress">In Progress</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Location" name="location" [(ngModel)]="mission.location" required>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onSubmit(missionForm)" [disabled]="!missionForm.valid" cdkFocusInitial>Submit</button> <!-- Disable the button if the form is invalid -->
+</div>

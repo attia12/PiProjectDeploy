@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit User</h2>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="data.username" placeholder="Username">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="data.email" placeholder="Email">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Image URL</mat-label>
+    <input matInput [(ngModel)]="data.image" placeholder="Image URL">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Roles</mat-label>
+    <input matInput [(ngModel)]="data.roles[0]" placeholder="Roles">
+  </mat-form-field>
+  <!-- Add more input fields as needed -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true">Close</button>
+  <button mat-button (click)="updateUser()">Update</button>
+</div>

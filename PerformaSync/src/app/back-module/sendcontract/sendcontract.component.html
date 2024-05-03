@@ -1,0 +1,53 @@
+<main id="main" class="main">
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sign Contract</h5>
+              <form (ngSubmit)="onSubmit()" [formGroup]="ContractForm">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Date de début</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="dateDebut">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Date de fin</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" formControlName="dateFin">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Salaire</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="salaire">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Type</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="Type" formControlName="type">
+                      <option value="CDD(Fixed-term contract)">CDD(Fixed-term contract)</option>
+                      <option value="CDI(Permanent contract)">CDI(Permanent contract)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Signature</label>
+                  <div class="col-sm-10">
+                    <signature-pad formControlName="signature"></signature-pad>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

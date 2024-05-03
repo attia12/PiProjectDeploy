@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card>
+    <div style="display:flex; flex-direction: row;" >
+      <div >
+        <div>
+
+        <h1>My ChatRoom</h1>
+
+        <small *ngIf="user$ | async as user; else loading" > Logged in as {{user.username}}</small>
+        <ng-template #loading>
+          <p>Loading...</p>
+        </ng-template>
+        <button mat-button [routerLink]="['../createRoom']">Create new Room</button>
+      </div>
+      <div *ngIf="(rooms$ | async)?.items?.length > 0; else no_rooms" class="rooms">
+        <mat-selection-list [multiple]="false" (selectionChange)="onSelectRoom($event)">
+          <mat-list-option *ngFor="let room of (rooms$ | async)?.items" [value]="room">
+            Name : {{room.name }} Id : {{room._id}}
+
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-paginator [length]="(rooms$ | async)?.meta?.totalItems"
+        [pageIndex]="(rooms$ | async)?.meta?.currentPage"
+         [pageSize]="(rooms$ | async)?.meta?.itemCount"
+          (page)="onPaginateRooms($event)"
+                       [pageSizeOptions]="[10,25,50]"
+        ></mat-paginator>
+
+      </div>
+       
+
+
+     
+         
+      </div>
+      <div class="chatroom">
+
+      <app-chat-room [chatRoom]="selectedRoom"></app-chat-room>
+        
+      </div>
+
+    </div>
+
+  </mat-card>
+
+</div>
+<ng-template #no_rooms>
+  <div>
+    <mat-error>No ChatRooms for you,Please Create a room</mat-error>
+  </div>
+
+</ng-template>
+

@@ -1,0 +1,74 @@
+<section>
+  <div class="container-fluid ">
+
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+
+            <h2 class="my-3">{{user.username}}
+              @if(user.verified){
+              <fa-icon class=" text-success" [icon]="faCheck" style="font-size: 2rem; margin: 1rem;"></fa-icon>
+              }
+            </h2>
+
+            <p class="text-muted mb-1">{{user.roles[0]}}</p>
+            <p class="text-muted mb-4">{{user.email}}</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary"
+                (click)="openDialogProfil()">Update</button>
+              <button type="button" data-mdb-button-init data-mdb-ripple-init
+                class="btn btn-outline-primary ms-1">Share</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Username</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.username}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Status</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.enabled ? "ACTIVE":"NOTACTIVE" }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
