@@ -1,7 +1,12 @@
-FROM node:16-alpine
-WORKDIR /app
-COPY . /app
-RUN npm install
+FROM node:20
+RUN  mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install && npm cache clean --force
+COPY . .
 RUN npm run build-dev
 EXPOSE 5000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:dev"]
+
+
+
