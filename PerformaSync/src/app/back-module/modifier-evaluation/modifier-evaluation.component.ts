@@ -91,7 +91,7 @@ faStar = faStar;
     console.log(data);
     this.services.updateEvaluation(this.id, evaluation).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['back/ListEvaluation'])
+      this.router.navigate(['back/EmployeeEntryList'])
 
     });
   }

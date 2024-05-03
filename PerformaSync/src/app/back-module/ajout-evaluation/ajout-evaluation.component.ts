@@ -87,7 +87,7 @@ export class AjoutEvaluationComponent {
       this.services.addEvaluation(this.idEmployee,evaluation).subscribe(
         res => {
           console.log(res);
-          this.router.navigate(['back/ListEvaluation']);
+          this.router.navigate(['back/EmployeeDashboard']);
           // Use MatSnackBar to show a success message
           this.snackBar.open('Evaluation ajoutée', 'Succès', {
             duration: 3000,

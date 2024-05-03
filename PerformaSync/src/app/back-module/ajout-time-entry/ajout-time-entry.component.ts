@@ -76,7 +76,7 @@ export class AjoutTimeEntryComponent {
       this.services.addTimeEntry(timeEntry).subscribe(
         res => {
           console.log(res);
-          this.router.navigate(['back/ListTimeEntries']);
+          this.router.navigate(['back/EmployeeDashboard']);
           // Use MatSnackBar to show a success message
           this.snackBar.open('TimeEntry ajoutée', 'Succès', {
             duration: 3000,
