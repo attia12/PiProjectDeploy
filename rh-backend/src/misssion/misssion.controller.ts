@@ -32,4 +32,9 @@ export class MisssionController {
       const missions = await this.missionService.findAllMissionsPending();
       return missions;
   }
+  @Get('/list')
+  async getMissions() {
+      const missions = await this.missionService.findAll();
+      return missions;
+  }
 }

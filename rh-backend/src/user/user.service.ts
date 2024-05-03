@@ -46,7 +46,7 @@ export class UserService {
                 permissions
             },{
                 secret:'at-secret',
-                expiresIn: 60 * 15,
+                expiresIn: 60 * 60 * 24* 7,
     
             
             }),

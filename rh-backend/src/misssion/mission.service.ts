@@ -60,4 +60,14 @@ export class MissionService {
             return missions;
         }
       
+        async findAll():Promise<Mission[]>{
+          const missions= await this.missionModel.find().populate('assignedEmployees') // Populate assignedEmployees field
+          .populate('assignedManager') // Populate assignedManager field
+          .exec();
+            if (!missions) {
+                  throw new NotFoundException('Missions not found for this company.');
+            }
+            return missions;
+              
+        }
 }
